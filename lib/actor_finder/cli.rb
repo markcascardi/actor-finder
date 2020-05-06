@@ -2,42 +2,30 @@ class ActorFinder::CLI
 
   def call
     puts "Welcome to Actor finder, where you can find an actor!"
-    list_actors
+    ActorFinder::ImdbScraper.scrape_actors
+    ActorFinder::Actor.list_actors
     menu
-  end
-
-  def list_actors
-    @actors = ActorFinder::Actor.actor_list
-    @actors.each_with_index { |actor, i| puts "#{i + 1}. #{actor.name}"}
   end
 
   def menu
     puts "Select a number for more info on an actor for more info. Type list to see main menu and exit to leave:"
-    input = nil
-    while input != "exit"
+
+    loop do
       input = gets.chomp.downcase
-      if input.to_i > 0
-        puts @actors[input.to_i - 1]
+
+      if input == "exit"
+        break
       elsif input == "list"
-        list_actors
+        ActorFinder::Actor.list_actors
+      elsif 0 < input.to_i && input.to_i <= ActorFinder::Actor.count
+        puts ActorFinder::Actor.all[input.to_i - 1]
       else
-        "Please enter a number between 1 and 50, 'list' or exit"
+        puts "Please enter a number between 1 and #{ActorFinder::Actor.count}, 'list', or 'exit'"
       end
     end
   end
 end
 
-# Select an actor from Star Wars to see filmography
-# 1. Carrie Fisher
-# 2. Harrison Ford
-# 3. Mark Hamill  nm0000434
-# 4. Ewan McGregor
-# 5. Samuel L Jackson
-# 6. Natalie Portman
-# 7. Liam Neeson
-# 8. James Earl Jones
-# 9. Laura Dern
-# 10. Adam Driver
 #
 # Url to scrape: https://www.imdb.com/name/<actor id here>
 # 	scraping for filmography for film titles

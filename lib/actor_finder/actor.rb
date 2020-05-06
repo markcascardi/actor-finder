@@ -1,15 +1,46 @@
 class ActorFinder::Actor
-  attr_accessor :id, :movies, :name, :roles
+  attr_accessor :bio_page, :name, :roles
 
+  @@all = []
 
-    def self.actor_list
-      actor_1 = self.new
-      actor_1.name = "Harrison Ford"
-      actor_1.url = "https://www.imdb.com/name/nm0000148/"
-      ActorFinder::ImdbScraper.new("https://www.imdb.com/list/ls053501318/")
-    end
+  def initialize(name, bio_page)
+    self.name = name
+    self.bio_page = bio_page
+    @@all << self
+  end
 
+  def self.all
+    @@all
+  end
 
+  def to_s
+    name
+  end
+
+  def self.list_actors
+    all.each_with_index { |actor, i| puts "#{i + 1}. #{actor.name}"}
+  end
+
+  def self.count
+    all.size
+  end
+
+  # def actor_list
+  #   ActorFinder::ImdbScraper.scrape_actors
+  # end
 end
+
+  # def self.actor_list
+  #   # actor_1 = self.new
+  #   # actor_1.name = "Harrison Ford"
+  #   # actor_1.url = "https://www.imdb.com/name/nm0000148/"
+  #   ActorFinder::ImdbScraper.scrape_actors
+  # end
+
+  # def actors
+  #   @actors
+  # end
+
+
 
 # Actor - name, has many films, has many actors
