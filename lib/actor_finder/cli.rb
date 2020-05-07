@@ -1,13 +1,12 @@
 class ActorFinder::CLI
-
   def call
     puts "Welcome to Actor finder, where you can find an actor!"
     ActorFinder::ImdbScraper.scrape_actors
     ActorFinder::Actor.list_actors
-    menu
+    main_menu
   end
 
-  def menu
+  def main_menu
     puts "Select a number for more info on an actor for more info. Type list to see main menu and exit to leave:"
 
     loop do
@@ -18,9 +17,10 @@ class ActorFinder::CLI
       elsif input == "list"
         ActorFinder::Actor.list_actors
       elsif 0 < input.to_i && input.to_i <= ActorFinder::Actor.count
-        puts ActorFinder::Actor.all[input.to_i - 1]
+        actor =  ActorFinder::Actor.all[input.to_i - 1]
+        ActorFinder::Film.list_films(actor)
       else
-        puts "Please enter a number between 1 and #{ActorFinder::Actor.count}, 'list', or 'exit'"
+        puts "Please enter a number between 1 and #{ActorFinder::Actor.count  }, 'list', or 'exit'"
       end
     end
   end

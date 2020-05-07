@@ -1,5 +1,5 @@
 class ActorFinder::Actor
-  attr_accessor :bio_page, :name, :roles
+  attr_accessor :bio_page, :name, :films
 
   @@all = []
 
@@ -24,10 +24,6 @@ class ActorFinder::Actor
   def self.count
     all.size
   end
-
-  # def actor_list
-  #   ActorFinder::ImdbScraper.scrape_actors
-  # end
 end
 
   # def self.actor_list
