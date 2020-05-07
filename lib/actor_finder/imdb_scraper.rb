@@ -4,8 +4,7 @@ class ActorFinder::ImdbScraper
     doc = Nokogiri::HTML(open(top_fifty_actors_url))
     actor_elements = doc.css('div.lister-item-content')
 
-    actor_elements.each_with_index do |actor, i|
-      break if i == 4
+    actor_elements.map do |actor|
       name = actor.css('h3 a').text.strip
       bio_page = actor.css('h3 a').first['href']
       ActorFinder::Actor.new(name, bio_page)
@@ -24,11 +23,6 @@ class ActorFinder::ImdbScraper
     end
   end
 end
-  # def self.scrape_film_location
-  # end
-  #
 
 
-
-# 'https://movie-locations.com/movies/a/American-Hustle.php'
 # https://www.imdb.com/name/nm0000136
