@@ -1,14 +1,17 @@
 class ActorFinder::Film
-  attr_accessor :actor, :name, :locations, :year
+  attr_accessor :actor, :film_page, :name, :year
 
-  def initialize(name, year, actor)
+  @@all = {}
+
+  def initialize(name, year, actor, film_page)
     self.name = name
     self.year = year
     self.actor = actor
+    self.film_page = film_page
   end
 
   def self.all(actor:)
-    @@all ||= ActorFinder::ImdbScraper.scrape_filmography(actor, actor.bio_page)
+    @@all[actor.name] ||= ActorFinder::ImdbScraper.scrape_filmography(actor, actor.bio_page)
   end
 
   def self.display_all(actor:)
@@ -21,15 +24,3 @@ class ActorFinder::Film
     puts "#{index + 1}. #{film.name} - #{film.year}"
   end
 end
-  # def add_actor(actor)
-  #   @actors << actor unless @actors.include?(actor)
-  #   actor.film = self if actor.film.nil?
-  # end
-
-  # def self.all_by_actor(actor)
-  #   all.select { |film| film.actor == actor }
-  # end
-
-  # def actor_film_list
-  #   find_by_actor(actor)
-  # end

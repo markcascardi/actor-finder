@@ -1,0 +1,42 @@
+Things to do
+- call film detail link in cli
+  - create method in Film
+  - call it when the condition in the CLI statement is met
+- colorize(purple?) movies and actors once they have been selected
+  - add colorize when we get the input or movie_input
+- fix/finish the flow of the CLI menus
+  should be:
+  - select actor
+    - exit, select actor if input is valid and display
+    - exit, select movie if input is valid
+      - click the link to buy or rent the movie
+      - give some space and re-display movies, or would you
+      like to select a different actor
+- refactor CLI
+  - valid method for inputs
+- add some graphics to the welcome
+- make error message for if it times-out
+
+
+- update README
+- film myself coding
+- schedule review
+- record functionality overview
+
+black
+light_black
+red
+light_red
+green
+light_green
+yellow
+light_yellow
+blue
+light_blue
+magenta
+light_magenta
+cyan
+light_cyan
+white
+light_white
+default
