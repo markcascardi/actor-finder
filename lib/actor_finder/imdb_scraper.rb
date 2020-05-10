@@ -33,31 +33,8 @@ class ActorFinder::ImdbScraper
     if view_film_page.nil?
       puts "So sorry - this film is not available at this time"
     else
-      # `open #{godfather}`
-      # puts "Click here to view: #{view_film_url}".colorize(:light_blue)
-      `printf '\e]8;;%{view_film_url}\e\\This is a link\e]8;;\e\\\n'`
-      # `printf '\e]8;;%{view_film_url}\e\\This is a link\e]8;;\e\\\n' % {view_film_url: view_film_url}`
-      # printf '\e]8;;http://example.com\e\\This is a link\e]8;;\e\\\n'
+      puts "Click here to view:".colorize(:light_white)
+      puts "#{view_film_url}".colorize(:light_blue)
     end
   end
-
-  # def self.scrape_amazon(name)
-  #   name = name.downcase.split(" ").join("+")
-  #   film_info_url = "https://www.amazon.com/s?k=#{name}&i=movies-tv"
-  #
-  #   user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.854.0 Safari/535.2"
-  #   doc = Nokogiri::HTML(open(film_info_url, 'User-Agent' => user_agent), nil, "UTF-8")
-  #   binding.pry # doc = Nokogiri::HTML(open(film_info_url))
-  #   view_film_url = doc.css("div.a-section.a-spacing-medium a")["href"]
-  #
-  #   `open https://www.amazon.com/Godfather-Marlon-Brando/dp/B005DNPFUE/ref=sr_1_1?dchild=1&keywords=the+godfather&qid=1588997645&s=instant-video&sr=1-1`
-  # end
 end
-
-# https://www.amazon.com/s?k=the+godfather&i=movies-tv
-# # https://www.imdb.com/offsite/?page-action=offsite-amazon&token=BCYo4jyMUrfU-QtTzEsk3dvQfTXCxfcuAjG1nvm11-Yypik0FPLA2ithFu9_PC3osYMDtkOIO3Gx%0D%0ANIcU7UGmreW5WyriVfRo0QJQ3bWoR43RYSfSxs8twSuKpgi-EhV46zyxH9CXZUozE5VwnzCLIInX%0D%0A819AziNcGUTClXRKZsB97ERPCSSeCAMF_HZYDQ1nLy0WpU0GqdZDtAwtEZiwB7JQAJw5we6EheX8%0D%0AF3OxNZUJ69mO368NbcIpZPdtF3jMkltob6uRk4Gcx0Z9rKEIhfE__g%0D%0A
-# https://www.amazon.com/gp/video/detail/amzn1.dv.gti.64a9f786-efb1-28d3-bf27-6038d12cc53a?tag=imdbtag_tt_wbr_pvc_cbsaacf-20
-
-
-# https://www.imdb.com/name/nm0000136
-# https://www.imdb.com/title/tt3402236/

@@ -15,6 +15,7 @@ class ActorFinder::Film
   end
 
   def self.display_all(actor:)
+    puts "Here are all of #{actor}'s roles:"
     all(actor: actor).each_with_index do |film, index|
       display(film, index)
     end

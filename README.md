@@ -1,8 +1,7 @@
 # ActorFinder
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/actor_finder`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a CLI gem that scrapes for a list of top 50 current popular movie stars.
+Users can select their favorite actors and explore all movies they have acted in, including watching, renting, or purchasing these films.
 
 ## Installation
 
@@ -22,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Select actors and their associated films by entering the displayed number on the command line.
 
 ## Development
 
